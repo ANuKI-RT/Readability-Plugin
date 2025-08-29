@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Dorn Areas Comments</metricName>
+    <metricDescription>Make sure that you use comments.
+        A comment should be placed close to the code it describes.
+        In addition, the terms used in the comment should match the terms in the code.
+        Pay attention to a suitable ratio of comments and code.
+        You should always define a javadoc comment to describe a method.</metricDescription>
+    <goodCodeDescription>Here a javadoc and useful other comments are present.
+        The terms in the comments are also the same as in the actual code</goodCodeDescription>
+    <goodCode>/**
+* Change the password of a user
+* @param username a username to identify the user
+* @param password the password to set
+* @return weather the password was changed successfully or not
+*/
+public boolean changePassword(String username, String password) {
+    User user = this.db.findUserByName(username);
+    if(user == null) {
+        return false; //null value indicates that no user was found
+    }
+    String hashed = this.hash(password);
+    if(password.equals(hashed)) {
+        return false; //do no allow current password
+    }
+    
+    //blocked or archived users cannot change their password
+    if(user.isBlocked() || user.isArchived()) {
+        return false; 
+    }
+    user.setPassword(password);
+    this.db.updateUser(user);
+    return true;
+}</goodCode>
+    <badCodeDescription>Here the changePassword method has very few comments.
+        In addition to that no javadoc is present.</badCodeDescription>
+    <badCode>public boolean changePassword(String username, String password) {
+    User user = this.db.findUserByName(username);
+    if(user == null) {
+        return false; //null value indicates that no item was found
+    }
+    String hashed = this.hash(password);
+    if(password.equals(hashed)) {
+        return false; //do no allow current password
+    }
+    
+    if(user.isBlocked() || user.isArchived()) {
+        return false; 
+    }
+    user.setPassword(password);
+    this.db.updateUser(user);
+    return true;
+}</badCode>
+</hint>

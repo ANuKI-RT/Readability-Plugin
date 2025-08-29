@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>DFT Periods</metricName>
+    <metricDescription>The distribution of special code features relative to the code plays a role in the readability of code.
+        This means that features should be periodically distributed evenly
+        rather than only occurring at a certain point or wildly distributed in the code.
+        In this case, the aim is to distribute the use of periods as evenly as possible in the code,
+        as this is generally more readable than using many periods in some places,
+        few in some places and no periods at all in other places</metricDescription>
+    <goodCodeDescription>In this example the use of periods is evenly distributed</goodCodeDescription>
+    <goodCode>public String combinePropsToString(String id,String name,String eMail) {
+    return new StringBuilder();
+    .append(&quot;\nID: &quot;)
+    .append(id)
+    .append(&quot;\nName: &quot;)
+    .append(name)
+    .append(&quot;\nE-Mail: &quot;)
+    .append(email)
+    .toString()
+}</goodCode>
+    <badCodeDescription>In this example the use of periods is not evenly distributed</badCodeDescription>
+    <badCode>public String combinePropsToString(String id,String name,String eMail) {
+    return new StringBuilder().append(&quot;\nID: &quot;)
+    .append(id).append(&quot;\nName: &quot;).append(name).append(&quot;\nE-Mail: &quot;)
+    .append(email)
+    .toString()
+}</badCode>
+</hint>

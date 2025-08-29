@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Max number of identifiers</metricName>
+    <metricDescription>Too many identifiers per line significantly impair the readability of the code.
+        So try to refer to as few variables per line as possible.</metricDescription>
+    <goodCodeDescription>Here we try to use only 1 identifier per line.</goodCodeDescription>
+    <goodCode>public static void goodPrintOrderDetails(Order order) {
+    Customer customer = order.getCustomer();
+    Product product = order.getProduct();
+    Address shippingAddress = order.getShippingAddress();
+    String phoneNumber = customer.getPhoneNumber();  // Assuming you have these methods in your classes
+    String orderStatus = order.getStatus();
+
+    StringBuilder orderDetailsBuilder = new StringBuilder()
+        .append(&quot;Order ID: &quot;).append(order.getId())
+        .append(&quot;, Customer Name: &quot;).append(customer.getName())
+        .append(&quot;\nProduct Category: &quot;).append(product.getCategory())
+        .append(&quot;, Price: $&quot;).append(product.getPrice())
+        .append(&quot;\nQuantity: &quot;).append(order.getQuantity())
+        .append(&quot;, Shipping Address: &quot;).append(shippingAddress.toAddressString())
+        .append(&quot;\nPhone Number: &quot;).append(phoneNumber)
+        .append(&quot;, Status: &quot;).append(orderStatus);
+
+    System.out.println(orderDetailsBuilder.toString());
+}</goodCode>
+    <badCodeDescription>In this example we the number of identifiers per line is much higher.
+        This results in very poorly readable code.</badCodeDescription>
+    <badCode>public static void goodPrintOrderDetails(Order order) {
+    Customer customer = order.getCustomer();
+    Product product = order.getProduct();
+    Address shippingAddress = order.getShippingAddress();
+    String phoneNumber = customer.getPhoneNumber();  // Assuming you have these methods in your classes
+    String orderStatus = order.getStatus();
+
+    StringBuilder orderDetailsBuilder = new StringBuilder()
+    .append(&quot;Order ID: &quot;).append(order.getId()).append(&quot;, Customer Name: &quot;).append(customer.getName()).append(&quot;\nProduct Category: &quot;).append(product.getCategory())
+    .append(&quot;, Price: $&quot;).append(product.getPrice()).append(&quot;\nQuantity: &quot;).append(order.getQuantity()).append(&quot;, Shipping Address: &quot;).append(shippingAddress.toAddressString())
+    .append(&quot;\nPhone Number: &quot;).append(phoneNumber).append(&quot;, Status: &quot;).append(orderStatus);
+
+    System.out.println(orderDetailsBuilder.toString());
+}</badCode>
+</hint>

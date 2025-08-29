@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>DFT Comparisons</metricName>
+    <metricDescription>The distribution of special code features relative to the code plays a role in the readability of code.
+        This means that features should be periodically distributed evenly rather than only occurring
+        at a certain point or wildly distributed in the code.
+        In this case, the aim is to distribute the use of comparison operators as evenly as possible in the code,
+        as this is generally more readable than using many comparisons in some places,
+        few in some places and no comparisons at all in other places</metricDescription>
+    <goodCodeDescription>In this example the use of compare operators evenly distributed</goodCodeDescription>
+    <goodCode>public void compareExample(int a, int b, int c) {   
+    boolean aEqualb = a == b;
+    System.out.println(aEqualb); 
+    boolean aEqualc = a == c;
+    System.out.println(aEqualc);    
+    boolean bEqualc = b == c; 
+    System.out.println(aEqualc);
+    boolean aLess5 = a &lt; 5;
+    System.out.println(aLess5);    
+    boolean bLess5 = b &lt; 5;
+    System.out.println(bLess5);   
+    boolean cLess5 = c &lt; 5;
+    System.out.println(cLess5);
+    boolean aLess10 = a &lt; 10;
+    System.out.println(aLess5);    
+    boolean bLess10 = b &lt; 10;
+    System.out.println(bLess5);   
+    boolean cLess10 = c &lt; 10;
+    System.out.println(cLess5);
+}</goodCode>
+    <badCodeDescription>In this example the use of compare operators not evenly distributed</badCodeDescription>
+    <badCode>public void compareExample(int a, int b, int c) {
+    boolean aEqualb = a == b;
+    System.out.println(aEqualc);
+    boolean aEqualc = a == c;
+    System.out.println(aEqualb);
+    
+    boolean bEqualc = b == c;
+    boolean aLess5 = a &lt; 5;
+    boolean bLess5 = b &lt; 5;
+    boolean cLess5 = c &lt; 5;
+    System.out.println(aEqualc);
+    System.out.println(aLess5);
+    System.out.println(bLess5);
+    System.out.println(cLess5);
+    
+    boolean aLess10 = a &lt; 10;
+    boolean bLess10 = b &lt; 10;
+    System.out.println(aLess5);    
+    System.out.println(bLess5);   
+    boolean cLess10 = c &lt; 10;
+    System.out.println(cLess5);
+}</badCode>
+</hint>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>DFT Keywords</metricName>
+    <metricDescription>The distribution of special code features relative to the code plays a role in the readability of code.
+        This means that features should be periodically distributed evenly rather than only occurring
+        at a certain point or wildly distributed in the code.
+        In this case, the aim is to distribute the use of keywords as evenly as possible in the code,
+        as this is generally more readable than using many keywords in some places,
+        few in some places and no keywords at all in other places</metricDescription>
+    <goodCodeDescription>In his example the use of keywords is evenly distributed</goodCodeDescription>
+    <goodCode>public int gradeToNum(String input) {   
+    if(input.equals(&quot;One&quot;)) { 
+        return 1;
+    }
+
+    if(input.equals(&quot;Two&quot;)) {
+        return 2;
+    }
+
+    if(input.equals(&quot;Three&quot;)) { 
+        return 3; 
+    }
+
+    if(input.equals(&quot;Four&quot;)) {
+        return 4; 
+    }
+
+    if(input.equals(&quot;Five&quot;)) {
+        return 5;
+    }
+    
+    return 6;
+}</goodCode>
+    <badCodeDescription>In this example the use of keywords not evenly distributed</badCodeDescription>
+    <badCode>public int gradeToNum(String input) {   
+    if(input.equals(&quot;One&quot;) || input.equals(&quot;Two&quot;)) { 
+        return input.equals(&quot;One&quot;) ? 1 : 2
+    }
+
+    if(input.equals(&quot;Three&quot;)) { 
+        return 3; 
+    } else if(input.equals(&quot;Four&quot;)) {
+        return 4; 
+    }
+
+    if(input.equals(&quot;Five&quot;)) {
+        return 5;
+    }
+
+    return 6;
+}</badCode>
+</hint>

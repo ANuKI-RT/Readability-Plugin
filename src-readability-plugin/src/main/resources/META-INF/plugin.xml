@@ -1,0 +1,59 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>de.uni_passau.fim.readability_plugin.CodeReadabilityPlugin</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>CodeReadabilityPlugin</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="urlberger@fim.uni-passau.de" url="https://www.fim.uni-passau.de/">Universität Passau - Fakultät für Informatik und Mathematik</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+        The Code Readability Plugin for IntelliJ is a powerful tool for software developers, designed to enhance code quality and developer productivity.
+        It helps you improve code readability by integrating existing readability models directly into IntelliJ IDE.
+        Features:
+        - Evaluate code readability for file / method / code snippets.
+        - Highlight code depending on its readability (green for good, yellow for moderate, and red for poor)
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <!-- Extension points defined by the plugin.
+
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="ReadabilityPlugin"
+                    anchor="right"
+                    factoryClass="de.uni_passau.fim.readability_plugin.dialogues.ReadabilityPluginWindowFactory"
+                    canCloseContents="true"
+                    secondary="false"/>
+    </extensions>
+
+    <actions>
+        <!--<action id="de.uni_passau.fim.readability_plugin.actions.TriggerReadabilityOverToolsAction" class="de.uni_passau.fim.readability_plugin.actions.TriggerReadabilityOverToolsAction"
+                text="Analyze readability" description="Checks the current file for readability">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="de.uni_passau.fim.readability_plugin.actions.TriggerReadabilityForSelectedFile" class="de.uni_passau.fim.readability_plugin.actions.TriggerReadabilityForSelectedFile"
+                text="Analyze readability">
+            <add-to-group anchor="after" group-id="ProjectViewPopupMenu" relative-to-action="$Paste"/>
+        </action>-->
+        <action id="de.uni_passau.fim.readability_plugin.actions.TriggerReadabilityForMarkedCodeAction" class="de.uni_passau.fim.readability_plugin.actions.TriggerReadabilityForMarkedCodeAction"
+                text="Analyze readability of parent scope">
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$Paste"/>
+        </action>
+    </actions>
+    <projectListeners>
+        <listener
+                class="de.uni_passau.fim.readability_plugin.listeners.MainPluginListener"
+                topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </projectListeners>
+</idea-plugin>

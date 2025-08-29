@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>DFT LineLengths</metricName>
+    <metricDescription>The distribution of special code features relative to the code plays a role in the readability of code.
+        This means that features should be periodically distributed evenly rather than only occurring
+        at a certain point or wildly distributed in the code. In this case,
+        the aim is to keep the line length if every line as equals as possible
+        as this is generally more readable than very different line lengths</metricDescription>
+    <goodCodeDescription>In this example, all lines of code are approximately the same length</goodCodeDescription>
+    <goodCode>public String stringifySystemUserProps(User user) {
+    StringBuilder sb = new StringBuilder();
+    sb.append(&quot;user has the following properties: &quot;);
+    sb.append(&quot;\nID: &quot;).append(user.getIdentifier());
+    sb.append(&quot;\nName: &quot;).append(user.getFullName());
+    sb.append(&quot;\nE-Mail: &quot;).append(user.getEmail());
+    sb.append(&quot;\nPhone: &quot;).append(user.getPhoneNum());
+    sb.append(&quot;\nAddress: &quot;).append(user.getAddress());
+    return sb.append(&quot;-------------------&quot;).toString()
+}</goodCode>
+    <badCodeDescription>In this example, the lines of code have very different lengths</badCodeDescription>
+    <badCode>public String stringifySystemUserProps(User user) {
+    return new StringBuilder();
+    sb.append(&quot;user has the following properties:  &quot;).append(&quot;\nID: &quot;).append(user.getIdentifier());
+    sb.append(&quot;\nName: &quot;).append(user.getFullName());
+    sb.append(&quot;\nE-Mail: &quot;)
+    .append(user.getEmail());
+    sb.append(&quot;\nPhone: &quot;).append(user.getPhoneNum())sb.append(&quot;\nAddress: &quot;).append(user.getAddress()).append(&quot;--------------------&quot;).toString();
+}</badCode>
+</hint>

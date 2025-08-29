@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Synonym commented words</metricName>
+    <metricDescription>Improve the consistency between your comments and your identifiers.
+        If the terms appearing in your comments are the same as the terms used
+        in the names of your variables this can improve the readability.
+        In addition to the identical terms, you can also use synonyms.</metricDescription>
+    <goodCodeDescription>In this code the term occupation (with synonym: job)
+        and the term worker (with synonym employee)
+        are used throughout the comments and identifiers in the method</goodCodeDescription>
+    <goodCode>/**
+* Get the profession of a user by comparing its professionId
+* with the profession ids of a given company.
+* @param worker the worker to get the profession for
+* @param company any company to compare the worker with
+* @return the found profession of null of no match was found.
+*/
+private Profession getProfession(Employee worker,Company company) {
+    List&lt;Profession&gt; professions = company.getProfessions();
+
+    int jobId = worker.getProfessionId()
+    for(Profession profession: professions) {
+        if(profession.getJobId() == jobId) {
+            return profession;
+        }
+    }
+
+    return null;
+}</goodCode>
+    <badCodeDescription>In this code worker and company appears in the comments
+        but the internal identifiers have some uninformative names
+        such as id, data and item</badCodeDescription>
+    <badCode>/**
+* Get the profession of a user by comparing its jobId
+* with the job ids of a given company.
+* @param worker the worker to check
+* @param company the company to use  
+* @return the found profession of null of no match was found.
+*/
+private Profession findMatch(User worker,Comp company) {
+    List &lt;Profession&gt; data = company.getJobs();
+
+    int id = worker.getJobId()
+    for(Profession item: data) {
+        if(item.getId() == data) {
+            return item;
+        }
+    }
+
+    return null;
+}</badCode>
+</hint>

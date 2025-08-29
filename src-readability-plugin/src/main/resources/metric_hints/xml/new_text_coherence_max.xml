@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Text Coherence</metricName>
+    <metricDescription>Text coherence defines the number of concepts used and implemented by a source code snippet.
+        If you use less different concepts in your code (especially within one method)
+        the readability of your code will increase</metricDescription>
+    <goodCodeDescription>In this code for both the rows and the columns a for loop is used,
+        in order to iterate over the items.
+        Therefore only one concept was used.</goodCodeDescription>
+    <goodCode>public void printMatrix(int[][] matrix, int rows, int cols) {
+    for (int i = 0; i &lt; rows ; i++) {
+        for (int j = 0; j &lt; cols; j++) {
+            System.out.println(&quot;Row: %d Column: %d Value: %d&quot;.formatted(i,j,matrix[i][j]));
+        }
+    }
+}</goodCode>
+    <badCodeDescription>In this code for one for loop and one while loop is used.
+        Even though the method still works as expected now 2 concepts were used.</badCodeDescription>
+    <badCode>public void printMatrix(int[][] matrix, int rows, int cols) {
+    for (int i = 0; i &lt; rows ; i++) {
+        int j = 0;
+        while (j &lt; cols) {
+            System.out.println(&quot;Row: %d Column: %d Value: %d&quot;.formatted(i,j,matrix[i][j]));
+            j++;
+        }
+    }
+}</badCode>
+</hint>

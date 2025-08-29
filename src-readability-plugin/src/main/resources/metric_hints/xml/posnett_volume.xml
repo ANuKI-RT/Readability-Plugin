@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Halstead’s Volume</metricName>
+    <metricDescription>Methods with high information density impair readability.
+        Therefore, do not try to implement many different functionalities and tasks in one method,
+        but divide the implementation into sub-methods.</metricDescription>
+    <goodCodeDescription>Here we implement the conversion for every currency in an own method</goodCodeDescription>
+    <goodCode>public static void printInDifferentCurrencies(double dollars) {
+    printUsdToEur(dollars);
+    printUsdToGbp(dollars);
+    printUsdToJpy(dollars);
+    printUsdToAud(dollars);
+    printUsdToCad(dollars);
+    printUsdToChf(dollars);
+    printUsdToInr(dollars);
+}</goodCode>
+    <badCodeDescription>Here the whole implementation is included in one single big method</badCodeDescription>
+    <badCode>public static void printInDifferentCurrencies(double dollars) {
+    double euroRate = 0.85;
+    double poundRate = 0.75;
+    double yenRate = 110.0;
+    double audRate = 1.35;
+    double cadRate = 1.25;
+    double chfRate = 0.92;
+    double inrRate = 73.0;
+
+    double euros = dollars * euroRate;
+    System.out.println(dollars + &quot; USD is &quot; + euros + &quot; EUR&quot;);
+
+    double pounds = dollars * poundRate;
+    System.out.println(dollars + &quot; USD is &quot; + pounds + &quot; GBP&quot;);
+
+    double yen = dollars * yenRate;
+    System.out.println(dollars + &quot; USD is &quot; + yen + &quot; JPY&quot;);
+
+    double aud = dollars * audRate;
+    System.out.println(dollars + &quot; USD is &quot; + aud + &quot; AUD&quot;);
+
+    double cad = dollars * cadRate;
+    System.out.println(dollars + &quot; USD is &quot; + cad + &quot; CAD&quot;);
+
+    double chf = dollars * chfRate;
+    System.out.println(dollars + &quot; USD is &quot; + chf + &quot; CHF&quot;);
+
+    double inr = dollars * inrRate;
+    System.out.println(dollars + &quot; USD is &quot; + inr + &quot; INR&quot;);
+}</badCode>
+</hint>

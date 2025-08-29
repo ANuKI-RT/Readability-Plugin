@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>align blocks</metricName>
+    <metricDescription>Note the block alignment conventions of your programming language.
+        Code that arranges parts of code that are generally considered to belong together.
+        Differently aligned blocks are generally less readable because the reading habits
+        usually correspond to the applicable conventions</metricDescription>
+    <goodCodeDescription>This code fulfills all current standards.
+        Examples:
+        - Assignments in same line
+        - Boolean expressions in same line
+        - no linebreaks in method call with 1 argument</goodCodeDescription>
+    <goodCode>public boolean changePassword(String username, String password) {
+    User user = this.db.findUserByName(username);
+    if(user == null) {
+        return false;
+    }
+    String hashed = this.hash(password);
+    if(password.equals(hashed)) {
+        return false; //do no allow current password
+    }
+    if(user.isBlocked() || user.isArchived()) {
+        return false; //blocked or archived users cannot change password
+    }
+    user.setPassword(password);
+    this.db.updateUser(user);
+    return true;
+}</goodCode>
+    <badCodeDescription>code is not formatted in the common conventions</badCodeDescription>
+    <badCode>public boolean changePassword(String username, String password) {
+    User user = this
+    .db.
+    findUserByName(username);
+    if(user 
+    == null) {
+        return false;
+    }
+    String hashed = this.hash(password);
+    if(password.equals(hashed)) {
+        return false; //do no allow current password
+    }
+    if(user.isBlocked()
+|| user.isArchived()) {
+        return false; //blocked or archived users cannot change password
+    }
+    user.setPassword(
+        password
+    );
+    this.db.updateUser(
+        user
+    );
+    return true;
+}</badCode>
+</hint>

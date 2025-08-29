@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Comment Identifier Consitency</metricName>
+    <metricDescription>Improve the consistency between your comments and your identifiers.
+        The terms appearing in your comments are the same as the terms used
+        in the names of your variables this can improve the readability.</metricDescription>
+    <goodCodeDescription>In this example the terms:
+        - appointment
+        - citizen
+        - database
+        - online meeting
+        - meeting api
+        - appointment
+        both appear in the comments and the identifiers</goodCodeDescription>
+    <goodCode>/**
+* Books an appointment by creating a online meeting for a given citizen 
+* using the meeting api and writing the parameters of the meeting in the database
+* @param appointment the appointment to book
+* @param citizen the citizen that the appointment should be booked for
+*/
+private void bookAppointment(Appointment appointment, Citizen citizen) {
+    OnlineMeeting onlineMeeting = this.meetingApi.createOnlineMeeting(appointment,citizen);
+    appointment.setOnlineMeeting(onlineMeeting);
+    database.updateAppointment(appointment);
+}</goodCode>
+    <badCodeDescription>In this example the terms do not match</badCodeDescription>
+    <badCode>/**
+* Books an appointment by creating a online meeting for a given citizen
+* and writing the parameters of the meeting in the database
+* @param scheduledAppoint the appointment to book
+* @param bookUser the citizen that the appointment should be booked for
+*/
+private void bookAppoint(Appointment scheduledAppoint, Citizen bookUser) {
+    OnlineMeeting meet = this.api.createOnlineMeeting(scheduledAppoint,bookUser);
+    scheduledAppoint.setOnlineMeeting(meet);
+    db.updateAppointment(scheduledAppoint);
+}</badCode>
+</hint>

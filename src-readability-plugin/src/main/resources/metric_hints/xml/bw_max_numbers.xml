@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Max numbers</metricName>
+    <metricDescription>Try to minimise the number of numbers per line in the code.
+        Too many numbers in a line make the code rather confusing and reduce its readability.
+        For large calculations, it is therefore advisable to divide the calculation
+        into smaller calculations and then combine them later</metricDescription>
+    <goodCodeDescription>In this code the calculation is made in different steps in multiple lines</goodCodeDescription>
+    <goodCode>public static void performCalculations() {
+    double firstFactor = (58 + 10 * 2.2);
+    double secondFactor = (2 + 6 / 3.54 * 7);
+    double thirdFactor = (25 * 2 / 2 * 8.4);
+
+    int result = firstFactor * secondFactor * thirdFactor;
+    System.out.println(&quot;Result of the calculations: &quot; + result);
+}</goodCode>
+    <badCodeDescription>In this code all the calculations are made in one single line</badCodeDescription>
+    <badCode>public static void performCalculations() {
+    int result = (58 + 10 * 2.2) * (2 + 6 / 3.54 * 7) * (25 * 2 / 2 * 8.4);
+    System.out.println(&quot;Result of the calculations: &quot; + result);
+}</badCode>
+</hint>

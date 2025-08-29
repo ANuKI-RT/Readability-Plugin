@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Max line length</metricName>
+    <metricDescription>Too much code in one line reduces readability.
+        Therefore, try to keep the line lengths as short as possible.</metricDescription>
+    <goodCodeDescription>In this code linebreaks are used after every append step,
+        to keep the code short and readable. Moreover, the parameters required
+        for the calculation and the customer data are stored in objects keeping the data encapsulated.
+        This way the method does only require 2 parameters,
+        making the method header relatively short.</goodCodeDescription>
+    <goodCode>public String generateShippingReport(Customer customer, Order order) {
+    StringBuilder report = new StringBuilder();
+    report.append(&quot;Shipping Report for Order #&quot;).append(order.getNumber())
+            .append(&quot;\nCustomer: &quot;).append(customer.getName())
+            .append(&quot;\nAddress: &quot;).append(customer.getAddress())
+            .append(&quot;\n\nOrder Details:\n&quot;)
+            .append(&quot;Item Count: &quot;).append(order.getItemCount())
+            .append(&quot;\nItem Price: $&quot;).append(order.getItemPrice())
+            .append(&quot;\nTotal Item Cost: $&quot;).append(oder.getItemCost())
+            .append(&quot;\nShipping Cost: $&quot;).append(order.getShippingCost())
+            .append(&quot;\nTax Rate: &quot;).append(order.getTaxRate(Tax.AS_PERCENT)).append(&quot;%&quot;)
+            .append(&quot;\nTotal Tax: $&quot;).append(order.getTotalTax())
+            .append(&quot;\n\nTotal Cost: $&quot;).append(order.getTotalCost())
+            .append(&quot;\n\nThank you for your business!&quot;);
+    return report.toString();
+}</goodCode>
+    <badCodeDescription>In this method no linebreaks between the append
+        calls are made resulting in extremely long lines.
+        The parameters header is also very long due to the fact that parameters where
+        not encapsulated in data transfer objects.
+        The calculations also happen directly in the .append method making the lines even longer.</badCodeDescription>
+    <badCode>public String generateShippingReport(String customerName, String address, int orderNumber, int itemCount, double itemPrice, double shippingCost, double taxRate) {
+    StringBuilder report = new StringBuilder();
+    report.append(&quot;Shipping Report for Order #&quot;).append(orderNumber).append(&quot;\nCustomer: &quot;).append(customerName).append(&quot;\nAddress: &quot;).append(address);
+    report.append(&quot;\n\nOrder Details:\n&quot;).append(&quot;Item Count: &quot;).append(itemCount).append(&quot;\nItem Price: $&quot;).append(itemPrice).append(&quot;\nTotal Item Cost: $&quot;).append(itemCount * itemPrice);
+    report.append(&quot;\nShipping Cost: $&quot;).append(shippingCost).append(&quot;\nTax Rate: &quot;).append(taxRate * 100).append(&quot;%&quot;).append(&quot;\nTotal Tax: $&quot;).append((itemCount * itemPrice + shippingCost) * taxRate);
+    report.append(&quot;\n\nTotal Cost: $&quot;).append((itemCount * itemPrice + shippingCost) * (1 + taxRate)).append(&quot;\n\nThank you for your business!&quot;);
+    return report.toString();
+}</badCode>
+</hint>

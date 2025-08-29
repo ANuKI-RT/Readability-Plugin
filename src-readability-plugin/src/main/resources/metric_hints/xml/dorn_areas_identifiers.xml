@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Areas Identifiers</metricName>
+    <metricDescription>The proportion of identifiers in the Java code
+        relative to the length of the complete code influences its readability.
+        Identifiers can be class names method names variable names or labels.
+        If you use to many of those in a single method the code will be harder
+        to read due to the high density of information.
+        You can improve this metric by adding comments / empty lines to the code.
+        Unnecessary variable definitions and method calls should also be removed.</metricDescription>
+    <goodCodeDescription>This code has a javadoc comment and a comment in the method body.
+        There are no unnecessary variables present The method does also
+        include some spaces that increase the readability.</goodCodeDescription>
+    <goodCode>/**
+* Calculates the final price of an item considering a discount and tax rate.
+* 
+* @param originalPrice the original price of the item (double)
+* @param discount the discount percentage as an integer (int)
+* @param taxRate the tax rate as a double (double)
+* @return true if the final price is above a threshold value
+*/
+public boolean calculateFinalPrice(double originalPrice, int discount, double taxRate) {
+
+    double discountAmount = originalPrice * discountPercentage / 100;
+    double discountedPrice = originalPrice - discountAmount;
+
+    double tax = discountedPrice * taxRate;
+    double finalPrice = discountedPrice + tax;
+
+    //threshold is set to 100
+    return finalPrice &gt; 100;
+}</goodCode>
+    <badCodeDescription>Here the method does not hava a javadoc comments or any comments within the method.
+        In addition to that plenty of identifiers are used and no spaces are present in the method,
+        which increases the identifier / full code ration even more.
+        Moreover, the isFinalPriceAboveThreshold is an unnecessary identifier,
+        due to the fact, that the boolean expression
+        finalPrice &gt; 10 can be returned instantly.</badCodeDescription>
+    <badCode>public class Main() {
+    public boolean calculateFinalPrice(double originalPrice, int discountPercentage, double taxRate) {
+        double discountAmount = originalPrice * discountPercentage / 100;
+        double discountedPrice = originalPrice - discountAmount;
+        double tax = discountedPrice * taxRate;
+        double finalPrice = discountedPrice + tax;
+        boolean isFinalPriceAboveThreshold = finalPrice &gt; 100;
+        return isFinalPriceAboveThreshold;
+    }
+}</badCode>
+</hint>

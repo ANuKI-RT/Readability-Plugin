@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>DFT Spaces</metricName>
+    <metricDescription>Inserting blank lines can make the code more readable.
+        If a method does not contain blank lines after logical sections within the code,
+        this can impair readability.
+        Therefore, make sure to separate different sections in the code with blank lines.</metricDescription>
+    <goodCodeDescription>In this code logical sections are split with spaces</goodCodeDescription>
+    <goodCode>public void printMeetingDetails(OnlineMeeting meeting, User Host, User participant) {
+
+    System.out.println(&quot;Meeting: &quot;);
+    System.out.println(&quot;ID: &quot; + meeting.getId());
+    System.out.println(&quot;Title: &quot; + meeting.getTitle());
+    System.out.println(&quot;Start Time: &quot; + meeting.getStartTime()); 
+    System.out.println(&quot;End Time: &quot; + meeting.getEndTime());
+    System.out.println(&quot;Participants: &quot; + meeting.getParticipants());
+
+    System.out.println(&quot;Host: &quot;);
+    System.out.println(&quot;Fist Name: &quot; + host.getFirstName());
+    System.out.println(&quot;Last Name: &quot; + host.getLastName());
+    System.out.println(&quot;Phone Number: &quot; + host.getPhoneNumber());
+    System.out.println(&quot;Email Address: &quot; + host.getEmailAddress());
+
+    System.out.println(&quot;Participant: &quot;);
+    System.out.println(&quot;Fist Name: &quot; + participant.getFirstName());
+    System.out.println(&quot;Last Name: &quot; + participant.getLastName());
+    System.out.println(&quot;Phone Number: &quot; + participant.getPhoneNumber());
+    System.out.println(&quot;Email Address: &quot; + participant.getEmailAddress());
+    
+}</goodCode>
+    <badCodeDescription>In this code no logical separation is made, making the code harder to read</badCodeDescription>
+    <badCode>public void printMeetingDetails(OnlineMeeting meeting, User Host, User participant) {
+
+    System.out.println(&quot;Meeting: &quot;);
+    System.out.println(&quot;ID: &quot; + meeting.getId());
+    System.out.println(&quot;Title: &quot; + meeting.getTitle());
+    System.out.println(&quot;Start Time: &quot; + meeting.getStartTime()); 
+    System.out.println(&quot;End Time: &quot; + meeting.getEndTime());
+    System.out.println(&quot;Participants: &quot; + meeting.getParticipants());
+    System.out.println(&quot;Host: &quot;);
+    System.out.println(&quot;Fist Name: &quot; + host.getFirstName());
+    System.out.println(&quot;Last Name: &quot; + host.getLastName());
+    System.out.println(&quot;Phone Number: &quot; + host.getPhoneNumber());
+    System.out.println(&quot;Email Address: &quot; + host.getEmailAddress());
+    System.out.println(&quot;Participant: &quot;);
+    System.out.println(&quot;Fist Name: &quot; + participant.getFirstName());
+    System.out.println(&quot;Last Name: &quot; + participant.getLastName());
+    System.out.println(&quot;Phone Number: &quot; + participant.getPhoneNumber());
+    System.out.println(&quot;Email Address: &quot; + participant.getEmailAddress());
+
+}</badCode>
+</hint>

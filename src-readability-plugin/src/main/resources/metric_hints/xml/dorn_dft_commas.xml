@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>DFT Commas</metricName>
+    <metricDescription>The distribution of special code features relative to the code plays a role in the readability of code.
+        This means that features should be periodically distributed evenly
+        rather than only occurring at a certain point or wildly distributed in the code.
+        In this case, the aim is to distribute the use of commas as evenly as possible in the code,
+        as this is generally more readable than using many commas in some places,
+        a few in some places and no commas at all in other places.</metricDescription>
+    <goodCodeDescription>In this example the use of commas is evely distributed throughout the code.</goodCodeDescription>
+    <goodCode>public void declarationExample() {
+    int a, b;
+    int c, d;
+    int e, f;
+    int g, h;
+    int i, j;
+    int k, l;
+    int m, n;
+}</goodCode>
+    <badCodeDescription>In this example the use of commas is not evenly distributed</badCodeDescription>
+    <badCode>public void declarationExample() {
+    int a, b;
+    int c;
+
+    int d,e,f,g,h;
+    
+    int i; 
+    int j; 
+    
+    int k;int l;
+
+    int m,n,o,p;
+
+    int q;
+    int r;
+    int s;
+    int t;   
+}</badCode>
+</hint>

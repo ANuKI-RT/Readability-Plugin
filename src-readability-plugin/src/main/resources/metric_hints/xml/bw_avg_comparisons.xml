@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Avg comparisons</metricName>
+    <metricDescription>Code usually becomes less readable if it contains many comparison operators.
+        So try to avoid unnecessary comparisons and divide your implementation
+        into smaller methods with fewer comparisons if necessary</metricDescription>
+    <goodCodeDescription>Here the comparisons are split into smaller methods
+        to decrease the amount of comparisons per method</goodCodeDescription>
+    <goodCode>public boolean isEvenSquareBigger1000(int number) {
+    if(!isEven(number)){
+        return false
+    }
+    if(!isSquare(number)) {
+        return false;
+    }
+    return number &gt; 1000;
+}</goodCode>
+    <badCodeDescription>Here all the comparisons required are implemented
+        in one method which makes the code unreadable</badCodeDescription>
+    <badCode>public boolean isEvenSquareBigger1000(int number) {
+    int sqrt = (int) Math.sqrt(number);
+    if (sqrt * sqrt != number) {
+            return false;
+    }
+    if (sqrt % 2 != 0) {
+        return false; 
+    }
+    return number &gt; 1000;
+}</badCode>
+</hint>

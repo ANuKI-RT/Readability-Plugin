@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Areas Keywords/Identifiers</metricName>
+    <metricDescription>The proportion of keywords per identifier (class names method names variable names or labels)
+        in the Java code influences readability.
+        If you use too many unnecessary keywords, the code becomes more readable.
+        In principle, you should use fewer rather than more keywords compared to the number of identifiers.
+        The easiest way to improve this value is to omit unnecessary keywords.</metricDescription>
+    <goodCodeDescription>Here the boolean is returned directly and no unnecessary if / else keywords are used.
+        Due to the fact that this code wont throw any exceptions no unnecessary try / catch blocks are used.
+        There are also no redundant return statements.</goodCodeDescription>
+    <goodCode>public static boolean performAdvancedDataValidation(int input, String identifier) {
+    return input &gt; 0 &amp;&amp; identifier != null &amp;&amp; !identifier.isEmpty();
+}</goodCode>
+    <badCodeDescription>In this code a unnecessary if / else statement is used instead of returning the value directly.
+        The try / catch blocks are also not required. The return false after the else block will also never be
+        executed making the return keyword unnecessary.</badCodeDescription>
+    <badCode>public static boolean performAdvancedDataValidation(int input, String identifier) {
+    try {
+        if (input &gt; 0 &amp;&amp; identifier != null &amp;&amp; !identifier.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+        return false;
+    }
+    catch(RuntimeException e) {
+        throw e;
+    }
+
+}</badCode>
+</hint>

@@ -1,0 +1,90 @@
+<style>
+    div {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #484c4c;
+        color: white;
+    }
+
+    pre {
+        background-color: #898686;
+        border: 1px solid #2b2929;
+        padding: 4px;
+    }
+
+    code {
+        font-family: Consolas, "Courier New", monospace;
+        color: white;
+    }
+
+    a {
+        color: white;
+    }
+
+    .hint-details {
+        border: 1px solid #2b2929;
+        padding: 5px;
+    }
+
+    /*.description {
+        text-align: left;
+        width: 550px;
+    }*/
+</style>
+
+<div class="hint-details">
+    <h3>Hint: ${ranking}</h3>
+    <h4>Metric Name: Javadoc</h4>
+    <br>
+    <h4>Metric Description:</h4>
+    <p class="description"><b>The ${methodName} method has no javadoc</b><br><br>
+In general, it always makes the code more readable if you write a Javadoc comment for the method.<br>
+Describe here the task that your method implements, which input parameters it requires<br>
+and which return values the method has. If your method can throw exceptions,<br>
+describe in which cases this happens.<br>
+Please pay attention to correct grammar and spelling in your comment.</p>
+    <br>
+    <u>Good Practice</u>
+    <p class="description">Here a well written javadoc is present.</p>
+    <div>
+        <pre><code>
+/**
+* Create a chatroom for 2 users of the chat service.
+* In order to authenticate against the api the authtoken of the
+* first chat user is used, due to the fact that this user initated creating the chat room.
+*
+* @param firstMember the first member of the chatroom (this one create the room)
+* @param secondMember the second member of the chatroom
+* @param title the title of the chatroom (if null the displaynames of the members are used as default name)
+* @param description the description of the chatroom (if null a empty string will be set)
+* @return the created chat room
+* @throws ApiException if the api request to send the request failed
+*/
+public ChatRoom createChatRoom(User firstMember, User secondMember, String title, String description) throws ApiException {
+    ChatApiService apiService = ChatApiService.getInstance();
+    RoomApi roomApi = apiService.createRoomApi(firstMember.authToken());
+
+    if(title == null) {
+        title = "Chat Room between " firstMember.getUserName() + " and " + secondMember.getUserName();
+    }
+
+    if(description == null) {
+        description = "";
+    }
+
+    return roomApi.createChatRoom(firstMember.getId(),secondMember.getId(),title,description);
+}
+        </code></pre>
+    </div>
+    <br>
+    <u>Bad Practice</u>
+    <p class="description">Here no javadoc method is present.</p>
+    <div>
+        <pre><code>
+public ChatRoom createChatRoom(User firstMember, User secondMember, String title, String description) throws ApiException {
+    ChatApiService apiService = ChatApiService.getInstance();
+    RoomApi roomApi = apiService.createRoomApi(firstMember.authToken());
+    return roomApi.createChatRoom(firstMember.getId(),secondMember.getId(),title,description);
+}
+        </code></pre>
+    </div>
+</div>

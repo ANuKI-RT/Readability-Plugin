@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Avg numbers</metricName>
+    <metricDescription>The number of numbers in the code can influence its readability.
+        In general, fewer numbers used lead to higher readability.
+        Therefore, try to avoid unnecessary numbers in the code to reduce the avery amount of numbers per line.
+        A good option is to store constants in class variables.</metricDescription>
+    <goodCodeDescription>In this example the constants defining the customer types and the
+        minimal purchase values for a specific discount are stored in class variables which
+        reduces the amount of numbers used in the actual implementation.</goodCodeDescription>
+    <goodCode>public static final int REGULAR_CUSTOMER = 0;
+public static final int GOLD_MEMBER = 1;
+
+public static final int MIN_PURCHASE_FOR_REGULAR = 3;
+public static final int MIN_PURCHASE_FOR_GOLD = 5;
+
+public static final double[] DEFAULT_DISCOUNTS = {0.0, 0.2};
+
+public static double calculateDiscount(double price, int customerType, int purchaseCount) {
+    double discount = DEFAULT_DISCOUNTS[customerType];
+
+    boolean minRegular = purchaseCount &gt;= MIN_PURCHASE_FOR_REGULAR;
+    boolean minGold = purchaseCount &gt;= MIN_PURCHASE_FOR_GOLD;
+    
+    if (customerType == REGULAR_CUSTOMER &amp;&amp; minRegular) {
+        discount = 0.1;
+    } 
+    else if (customerType == GOLD_MEMBER &amp;&amp; minGold) {
+        discount += 0.05;
+    }
+
+    return price * discount;
+}</goodCode>
+    <badCodeDescription>In this example all the numbers are directly used in the method.
+        Here the reader will not understand which number corresponds to which customer type (regular, gold member)
+        which can make the code confusing and less readable</badCodeDescription>
+    <badCode>public static double calculateDiscount(double price, int customerType, int purchaseCount) {
+    double discount = 0.0;
+
+    if (customerType == 1) {
+        if (purchaseCount &gt;= 3) {
+            discount = 0.1;
+        }
+    } 
+    else if (customerType == 2) {
+        discount = 0.2;
+        if (purchaseCount &gt;= 5) {
+            discount += 0.05;
+        }
+    }
+    return price * discount;
+}</badCode>
+</hint>

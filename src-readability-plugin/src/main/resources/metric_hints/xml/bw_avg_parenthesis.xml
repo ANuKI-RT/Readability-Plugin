@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hint>
+    <metricName>Avg parenthesis</metricName>
+    <metricDescription>The number of brackets used significantly influences the readability of code.
+        Code with many curly and round brackets is less readable than code with a
+        smaller number of brackets. So avoid the unnecessary use of subs copes
+        (e.g. unnecessary else block) and try to use as few brackets as possible for boolean expressions.
+        If the number of brackets is still too many, you can try to outsource code to methods
+        to reduce the number of brackets per method</metricDescription>
+    <goodCodeDescription>This code instantly returns if the user is null and therefore avoids
+        an unnecessary else block. In addition to this the boolean returned
+        at the end uses as few round brackets as possible.</goodCodeDescription>
+    <goodCode>public boolean authenticate(String username, String password) {
+    User user = this.db.findUserByName(username);
+    if(user == null) {
+        return false;
+    }
+    String dbPass = user.getPass()
+    String passHash = this.hash(password)
+    return dbPass.equals(passHash) &amp;&amp; !user.isBlocked() &amp;&amp; !user.isArchived()
+}</goodCode>
+    <badCodeDescription>This code does not return if the user is null but handles
+        this case in a else block. This increases the number of curly brackets.
+        Also the boolean at the return statement has many unnecessary round brackets assigned</badCodeDescription>
+    <badCode>public boolean authenticate(String username, String password) {
+    User user = this.db.findUserByName(username);
+    if(user != null) {
+        String dbPass = user.getPass()
+        String passHash = this.hash(password)
+        return ((dbPass.equals(passHash)) &amp;&amp; ((!user.isBlocked()) || (!user.isArchived())))
+    }
+    else {
+        return false:
+    } 
+}</badCode>
+</hint>

@@ -54,3 +54,5 @@ This directory should exist before running
 ## Modify Demonstrator
 
 Please refer to the `readme_aeneas_dump.txt` and the file `ANE-OHB-aeneas-repo-r1-r1024.dump` for accessing the code behind the `CppReadDP.jar`.
+
+ This Repository is part of the ANuKI project. Further information can be found in the Github [overview page](https://anuki-rt.github.io/) or the on the [HHZ](https://www.hhz.de/forschung/forschungsprojekte/anuki) website.
